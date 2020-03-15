@@ -20,7 +20,7 @@ public class Main {
     TicTacToe m = new TicTacToeModel();
     TTTViewImpl view = new TTTViewImpl();
     TicTacToeController control = new TicTacToeControllerImpl(view);
-    control.playGame();
+    control.playGame(m);
 
   }
 }

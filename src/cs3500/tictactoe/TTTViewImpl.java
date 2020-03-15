@@ -23,11 +23,13 @@ public class TTTViewImpl extends JFrame implements TTTView {
    */
   @Override
   public void addClickListener(TicTacToeController listener) {
-    MouseListener ml = (MouseAdapter) mouseClickec(e) -> {
+    MouseListener ml = (MouseAdapter) mouseClicked(e) -> {
       int row = (e.getY() - TTTPanel.OFFSET) / TTTPanel.CELL_DIM;
       int col = (e.getX() - TTTPanel.OFFSET) / TTTPanel.CELL_DIM;
-      l.handleCellClick();
-    }
+      ml.handleCellClick(row, col);
+      };
+
+    panel.addMouseListener(ml);
 
   }
 
