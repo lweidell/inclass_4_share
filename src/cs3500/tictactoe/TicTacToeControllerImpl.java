@@ -2,7 +2,7 @@ package cs3500.tictactoe;
 
 public class TicTacToeControllerImpl implements TicTacToeController {
   private TTTViewImpl view;
-  private TicTacToeModel model;
+  private TicTacToe model;
 
   public TicTacToeControllerImpl(TTTViewImpl view){
     this.view = view;
@@ -15,7 +15,7 @@ public class TicTacToeControllerImpl implements TicTacToeController {
    */
   @Override
   public void playGame(TicTacToe m) {
-    this.model = model;
+    this.model = m;
     view.addClickListener(this);
     view.makeVisible();
 

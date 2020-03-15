@@ -18,7 +18,7 @@ public class Main {
     // 3. Create an instance of the controller, passing the view to its constructor.
     // 4. Call playGame() on the controller.
     TicTacToe m = new TicTacToeModel();
-    TTTViewImpl view = new TTTViewImpl();
+    TTTViewImpl view = new TTTViewImpl("main", m);
     TicTacToeController control = new TicTacToeControllerImpl(view);
     control.playGame(m);
 

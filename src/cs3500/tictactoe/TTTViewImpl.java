@@ -1,6 +1,7 @@
 package cs3500.tictactoe;
 import javax.swing.JFrame;
 import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
 public class TTTViewImpl extends JFrame implements TTTView {
@@ -23,10 +24,10 @@ public class TTTViewImpl extends JFrame implements TTTView {
    */
   @Override
   public void addClickListener(TicTacToeController listener) {
-    MouseListener ml = (MouseAdapter) mouseClicked(e) -> {
+    MouseListener ml = (MouseAdapter) mouseClicked(MouseEvent e) -> {
       int row = (e.getY() - TTTPanel.OFFSET) / TTTPanel.CELL_DIM;
       int col = (e.getX() - TTTPanel.OFFSET) / TTTPanel.CELL_DIM;
-      ml.handleCellClick(row, col);
+      listener.handleCellClick(row, col);
       };
 
     panel.addMouseListener(ml);
