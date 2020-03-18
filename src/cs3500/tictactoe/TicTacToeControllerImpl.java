@@ -1,13 +1,17 @@
 package cs3500.tictactoe;
 
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-
-public class TicTacToeControllerImpl extends MouseAdapter implements TicTacToeController {
+/** This is a representation of a TTTController. it will handle communications from viewer to model.
+ * @field view Stores an instance of the viewer.
+ * @field model Stores an instance of the model of TicTacToe.
+ */
+public class TicTacToeControllerImpl implements TicTacToeController {
   private TTTViewImpl view;
   private TicTacToe model;
 
-  public TicTacToeControllerImpl(TTTViewImpl view){
+  /** This is the constructor for the controller which is given the view. It will make the model later.
+   * @param view The veiwer is the class for the JFrame and Panel.
+   */
+  public TicTacToeControllerImpl(TTTViewImpl view) {
     this.view = view;
   }
 

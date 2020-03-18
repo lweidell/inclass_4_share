@@ -1,17 +1,25 @@
 package cs3500.tictactoe;
 import javax.swing.JFrame;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 
+/**
+ * A class for the TTTView implementation. Extends JFrame.
+ * Has no fields, has methods to add mouse listener, refresh animation, and make it visible.
+ */
 public class TTTViewImpl extends JFrame implements TTTView {
   private TTTPanel panel;
 
-  public TTTViewImpl(String windowTitle, ReadonlyTTTModel m){
+  /**
+   * A public constructor for the class. Receives a String for the title of the window, as well
+   * as the ReadonlyTTTModel instance. Sets the size, location, and close operation for this
+   * JFrame, as well as adds a JPanel to itself.
+   * @param windowTitle a String, the name of the frame.
+   * @param m           a ReadonlyTTTModel instance.
+   */
+  public TTTViewImpl(String windowTitle, ReadonlyTTTModel m) {
     super(windowTitle);
 
-    setSize(1000 , 1000);
-    setLocation(500,500);
+    setSize(500, 500);
+    setLocation(200, 200);
     setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
     panel = new TTTPanel(m);
@@ -24,38 +32,19 @@ public class TTTViewImpl extends JFrame implements TTTView {
    */
   @Override
   public void addClickListener(TicTacToeController listener) {
-    TTTHandleClick handleClick = new TTTHandleClick();
+    TTTHandleClick handleClick = new TTTHandleClick(listener);
     addMouseListener(handleClick);
-    if(handleEvent(evt)){
-      int row = (evt.getY - TTTPanel.spacing) / TTTPanel.;
-      int col = (evt.getX - TTTPanel.spacing) / TTTPanel.Dimension;
-      listener.handleCellClick(row, col);
-    }
-    /*
-    MouseListener ml = (MouseAdapter) mouseClicked(e) -> {
-      int row = (e.getY() - TTTPanel.spacing) / TTTPanel.Dimension;
-      int col = (e.getX() - TTTPanel.spacing) / TTTPanel.Dimension;
-      listener.handleCellClick(row, col);
-      };
-    panel.addMouseListener(ml);
-    }
-    */
   }
 
-
-  /**
-   * Refresh the view to reflect any changes in the game state.
-   */
+  /** Refresh the view to reflect any changes in the game state. */
   @Override
   public void refresh() {
     this.repaint();
   }
 
-  /**
-   * Make the view visible to start the game session.
-   */
+  /** Make the view visible to start the game session. */
   @Override
   public void makeVisible() {
     this.setVisible(true);
   }
-}
+  }
