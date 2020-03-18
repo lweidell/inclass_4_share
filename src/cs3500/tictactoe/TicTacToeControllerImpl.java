@@ -1,12 +1,16 @@
 package cs3500.tictactoe;
 
-public class TicTacToeControllerImpl implements TicTacToeController {
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+
+public class TicTacToeControllerImpl extends MouseAdapter implements TicTacToeController {
   private TTTViewImpl view;
   private TicTacToe model;
 
   public TicTacToeControllerImpl(TTTViewImpl view){
     this.view = view;
   }
+
   /**
    * Execute a single game of tic tac toe given a tic tac toe Model. When the game is over,
    * the playGame method ends.
@@ -20,6 +24,7 @@ public class TicTacToeControllerImpl implements TicTacToeController {
     view.makeVisible();
 
   }
+
 
   /**
    * Handle an action in a single cell of the board, such as to make a move.

@@ -10,8 +10,8 @@ public class TTTViewImpl extends JFrame implements TTTView {
   public TTTViewImpl(String windowTitle, ReadonlyTTTModel m){
     super(windowTitle);
 
-    setSize(400, 300);
-    setLocation(200,200);
+    setSize(1000 , 1000);
+    setLocation(500,500);
     setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
     panel = new TTTPanel(m);
@@ -24,22 +24,31 @@ public class TTTViewImpl extends JFrame implements TTTView {
    */
   @Override
   public void addClickListener(TicTacToeController listener) {
-    MouseListener ml = (MouseAdapter) mouseClicked(MouseEvent e) -> {
-      int row = (e.getY() - TTTPanel.OFFSET) / TTTPanel.CELL_DIM;
-      int col = (e.getX() - TTTPanel.OFFSET) / TTTPanel.CELL_DIM;
+    TTTHandleClick handleClick = new TTTHandleClick();
+    addMouseListener(handleClick);
+    if(handleEvent(evt)){
+      int row = (evt.getY - TTTPanel.spacing) / TTTPanel.;
+      int col = (evt.getX - TTTPanel.spacing) / TTTPanel.Dimension;
+      listener.handleCellClick(row, col);
+    }
+    /*
+    MouseListener ml = (MouseAdapter) mouseClicked(e) -> {
+      int row = (e.getY() - TTTPanel.spacing) / TTTPanel.Dimension;
+      int col = (e.getX() - TTTPanel.spacing) / TTTPanel.Dimension;
       listener.handleCellClick(row, col);
       };
-
     panel.addMouseListener(ml);
-
+    }
+    */
   }
+
 
   /**
    * Refresh the view to reflect any changes in the game state.
    */
   @Override
   public void refresh() {
-
+    this.repaint();
   }
 
   /**
@@ -47,6 +56,6 @@ public class TTTViewImpl extends JFrame implements TTTView {
    */
   @Override
   public void makeVisible() {
-
+    this.setVisible(true);
   }
 }
